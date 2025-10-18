@@ -5,16 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>charity: water — Change Lives with Every Drop. </title>
   <meta name="description" content="Join the change. Help bring clean water and hope to every community." />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ---------- Base / Reset ---------- */
-    *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-      color: #1b1b1b;
-      line-height: 1.5;
-      background: #fffdf7;
-    }
+ :root {
+  /* Brand colors */
+  --cw-yellow: #FFD100;   /* official charity: water yellow */
+  --cw-ink:    #1B1B1B;
+  --cw-cream:  #FFFDF7;
+  --cw-line:   #EEE1A0;
+  --cw-accent: #0F9D58;
+
+  /* Font families */
+  --font-heading: "Nunito Sans", system-ui, sans-serif;
+  --font-body:    "Nunito Sans", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--cw-ink);
+  line-height: 1.5;
+  background: var(--cw-cream);
+}
+
+.hero h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
     img { max-width: 100%; display: block; height: auto; }
     a { color: inherit; text-decoration: none; }
 
@@ -124,8 +144,7 @@
   <header role="banner">
     <div class="container nav" aria-label="Primary">
       <a href="#top" class="brand" aria-label="charity: water home">
-        <span class="drop" aria-hidden="true"></span>
-        <span>charity: water</span>
+        <img src="img/logo.png" alt="charity: water logo" style="height:34px;">
       </a>
       <nav>
         <a href="#how" class="small">How it Works</a>

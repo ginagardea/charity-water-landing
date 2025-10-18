@@ -138,6 +138,32 @@ body {
       .features-grid { grid-template-columns: 1fr; }
       .foot { grid-template-columns: 1fr; }
     }
+    .badge-pop{
+  transform: translateY(8px) scale(0.98);
+  opacity: 0;
+  animation: badge-enter 600ms cubic-bezier(.2,.8,.2,1) 200ms forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes badge-enter{
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.badge-pop:hover,
+.badge-pop:focus-visible{
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.badge-pop:active{
+  transform: translateY(0) scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .badge-pop{ animation: none; transform: none; opacity: 1; }
+  .badge-pop:hover, .badge-pop:focus-visible{ transform: none; }
+}
+
   </style>
 </head>
 <body>
@@ -154,6 +180,7 @@ body {
         <a href="#donate" class="small"><strong>Donate</strong></a>
       </nav>
     </div>
+   
   </header>
 
   <main id="top">
@@ -163,12 +190,17 @@ body {
         <p class="eyebrow">Join the Change</p>
         <h1 id="hero-title">Change Lives with Every Drop.</h1>
         <p>Help bring clean water and hope to every community. Your gift funds sustainable water projects and provides updates you can follow.</p>
-        <div class="cta-row">
-          <a href="#donate" class="btn-cta">Start Changing Lives Now
-            <span aria-hidden="true">↗</span>
-          </a>
-          <span class="badge"><span class="dot"></span> 100% of donations fund water projects</span>
-        </div>
+<div class="cta-row">
+  <a href="#donate" class="btn-cta">
+    Start Changing Lives Now
+    <span aria-hidden="true">↗</span>
+  </a>
+
+  <span class="badge badge-pop">
+    <span class="dot"></span> 100% of donations fund water projects
+  </span>
+</div>
+
       </div>
 
       <figure class="hero-media" aria-label="Smiling child drinking clean water by a tap">

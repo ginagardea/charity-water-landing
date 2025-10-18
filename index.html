@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>charity: water — Change Lives with Every Drop</title>
+  <meta name="description" content="Join the change. Help bring clean water and hope to every community." />
+  <style>
+    /* ---------- Base / Reset ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: #1b1b1b;
+      line-height: 1.5;
+      background: #fffdf7;
+    }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- Layout Helpers ---------- */
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffffffc9;
+      backdrop-filter: saturate(1.2) blur(6px);
+      border-bottom: 1px solid #eee7c8;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-weight: 700; letter-spacing: 0.3px;
+    }
+    .brand .drop {
+      width: 20px; height: 26px; display: inline-block; border-radius: 12px 12px 50% 50% / 18px 18px 40% 40%;
+      background: #ffd100; /* charity: water yellow */
+      box-shadow: 0 3px 0 rgba(0,0,0,0.08) inset;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px;
+      align-items: stretch; min-height: clamp(540px, 75vh, 780px);
+    }
+    .hero-media {
+      position: relative; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+      order: 2; /* place on the right on large screens */
+    }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+    .hero-card {
+      align-self: center; order: 1; /* left side on large screens */
+      background: radial-gradient(120% 120% at 20% 10%, rgba(255, 209, 0, 0.96) 0%, rgba(255, 209, 0, 0.9) 55%, rgba(255, 209, 0, 0.85) 100%);
+      padding: clamp(24px, 4vw, 36px);
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(255, 209, 0, 0.35), 0 8px 20px rgba(0,0,0,0.08);
+      color: #1b1b1b;
+    }
+    .eyebrow { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.9; }
+    .hero h1 {
+      margin: 10px 0 10px;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.05;
+      font-weight: 800;
+      color: #1b1b1b;
+      text-wrap: balance;
+    }
+    .hero p { font-size: clamp(16px, 1.7vw, 20px); margin: 0 0 18px; opacity: 0.95; }
+
+    .cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 22px; border-radius: 999px; border: 2px solid #1b1b1b;
+      background: #ffd100; font-weight: 800; font-size: 1.05rem;
+      box-shadow: 0 6px 0 #1b1b1b22, 0 2px 0 #00000014 inset;
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 0 #1b1b1b22, 0 2px 0 #00000014 inset; }
+    .btn-ghost { padding: 12px 18px; border-radius: 999px; border: 2px dashed #1b1b1b; background: #fff7c6; font-weight: 700; }
+
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid #eee1a0; padding: 8px 12px; border-radius: 999px; font-size: 0.9rem; }
+    .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #0f9d58; }
+
+    /* ---------- Trust / Features ---------- */
+    .features { padding: 56px 0; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .card {
+      background: #fff; border: 1px solid #f0e7b8; border-radius: 16px; padding: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+    .card h3 { margin: 6px 0 8px; font-size: 1.15rem; }
+    .card p { margin: 0; opacity: 0.85; }
+
+    /* ---------- Footer ---------- */
+    footer { padding: 40px 0 56px; color: #474747; }
+    .foot {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; align-items: start;
+      border-top: 1px solid #eee1a0; padding-top: 24px;
+    }
+    .small { font-size: 0.92rem; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-media { order: 1; border-radius: 14px; }
+      .hero-card { order: 2; margin-top: -18px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .foot { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container nav" aria-label="Primary">
+      <a href="#top" class="brand" aria-label="charity: water home">
+        <span class="drop" aria-hidden="true"></span>
+        <span>charity: water</span>
+      </a>
+      <nav>
+        <a href="#how" class="small">How it Works</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <a href="#impact" class="small">Impact</a>
+        &nbsp;&nbsp;•&nbsp;&nbsp;
+        <a href="#donate" class="small"><strong>Donate</strong></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="container hero" aria-labelledby="hero-title">
+      <div class="hero-card">
+        <p class="eyebrow">Join the Change</p>
+        <h1 id="hero-title">Change Lives with Every Drop.</h1>
+        <p>Help bring clean water and hope to every community. Your gift funds sustainable water projects and provides updates you can follow.</p>
+        <div class="cta-row">
+          <a href="#donate" class="btn-cta">Start Changing Lives Now
+            <span aria-hidden="true">↗</span>
+          </a>
+          <span class="badge"><span class="dot"></span> 100% of donations fund water projects</span>
+        </div>
+      </div>
+
+      <figure class="hero-media" aria-label="Smiling child drinking clean water by a tap">
+        <!-- Replace the src below with your Canva image when ready -->
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1600&auto=format&fit=crop" alt="A child smiling with a glass of water next to a running tap" />
+      </figure>
+    </section>
+
+    <!-- FEATURES / TRUST -->
+    <section id="impact" class="features">
+      <div class="container features-grid">
+        <article class="card">
+          <h3>See Your Impact</h3>
+          <p>Track projects on a live map with photos and updates from the field once construction is complete.</p>
+        </article>
+        <article class="card">
+          <h3>100% Model</h3>
+          <p>Private donors cover our operating costs so every dollar you give can help bring clean water to people in need.</p>
+        </article>
+        <article class="card">
+          <h3>Sustainable Change</h3>
+          <p>We partner with local experts and invest in long‑term maintenance and training so water keeps flowing.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="container" style="padding: 0 0 56px;">
+      <div class="card" style="padding: 26px 22px;">
+        <h2 style="margin:0 0 10px; font-size:1.4rem;">How It Works</h2>
+        <ol class="small" style="margin:0; padding-left: 18px;">
+          <li><strong>Donate</strong> any amount. (One‑time or monthly.)</li>
+          <li><strong>We build</strong> water projects with trusted local partners.</li>
+          <li><strong>You receive</strong> project reports with photos, GPS, and impact data.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- DONATE CALLOUT -->
+    <section id="donate" class="container" aria-labelledby="donate-title" style="padding-bottom:72px;">
+      <div class="hero-card" style="background: linear-gradient(135deg, rgba(255,209,0,0.96), rgba(255,209,0,0.88));">
+        <h2 id="donate-title" style="margin-top:0;">Ready to Change Lives?</h2>
+        <p style="margin-top: 0;">Give today to help bring clean, safe water to families around the world.</p>
+        <div class="cta-row">
+          <a class="btn-cta" href="#" aria-label="Donate now">Donate Now</a>
+          <a class="btn-ghost" href="#" aria-label="Learn about monthly giving">Learn About Monthly Giving</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container foot">
+      <div>
+        <div class="brand"><span class="drop" aria-hidden="true"></span><span>charity: water</span></div>
+        <p class="small">© <span id="year"></span> charity: water. All rights reserved. This demo page is for design + code scaffolding purposes only.</p>
+      </div>
+      <div class="small">
+        <strong>Replace these placeholders in your project:</strong>
+        <ul style="margin:8px 0 0; padding-left: 18px;">
+          <li>Logo: swap the text logo with your SVG or PNG logo.</li>
+          <li>Hero image: replace the Unsplash URL in the <code>&lt;img&gt;</code> tag.</li>
+          <li>CTA links: point <em>Donate</em> buttons to your payment/pledge page.</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tiny enhancement: keep year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
